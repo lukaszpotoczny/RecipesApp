@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.recipesapp.presentation.navigator.AppNavigator
 
 @Composable
 fun NavGraph(startDestination: String){
@@ -17,6 +18,7 @@ fun NavGraph(startDestination: String){
         ) {
             composable(route = Route.RecipeNavigatorScreen.route) {
              //   RecipeNavigator()
+                AppNavigator()
             }
         }
     }

@@ -15,7 +15,7 @@ class DataRepositoryImpl(private val recipeDao: RecipeDao) : DataRepository {
         recipeDao.delete(recipe)
     }
 
-    override suspend fun getRecipe(id: Int): Recipe? {
+    override suspend fun getRecipe(id: String): Recipe? {
         return recipeDao.getRecipe(id)
     }
 

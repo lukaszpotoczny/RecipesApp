@@ -7,6 +7,6 @@ interface DataRepository {
 
     suspend fun upsertRecipe(recipe: Recipe)
     suspend fun deleteRecipe(recipe: Recipe)
-    suspend fun getRecipe(id: Int): Recipe?
+    suspend fun getRecipe(id: String): Recipe?
     fun getRecipes(): Flow<List<Recipe>>
 }

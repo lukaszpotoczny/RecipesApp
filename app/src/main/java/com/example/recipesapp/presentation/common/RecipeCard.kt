@@ -81,7 +81,8 @@ fun RecipeCardPreview() {
                 title = "Tasty chicken curry",
                 description = listOf(),
                 summary = listOf(),
-                author = "Łukasz"
+                author = "Łukasz",
+                isFavorite = false
                 ),
             onClick = {}
         )

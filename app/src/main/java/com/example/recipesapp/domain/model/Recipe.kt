@@ -6,10 +6,12 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Entity
+@Parcelize
 data class Recipe(
     @PrimaryKey val id: String,
     val title: String,
-    val description: List<Description>,
     val summary: List<Summary>,
-    val author: String?
-)
+    val description: List<Description>,
+    val author: String?,
+    val isFavorite: Boolean
+): Parcelable

@@ -6,20 +6,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.recipesapp.domain.model.Description
 import com.example.recipesapp.domain.model.Recipe
+import com.example.recipesapp.domain.model.RecipeBody
 import com.example.recipesapp.domain.model.Summary
 import com.example.recipesapp.domain.repo.RecipeRepository
 import com.example.recipesapp.presentation.navgraph.NavGraph
@@ -29,7 +25,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,24 +40,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             RecipesAppTheme {
-                val viewModel: MainViewModel = hiltViewModel()
-                val scope = rememberCoroutineScope()
-                // A surface container using the 'background' color from the theme
-                Column {
-                    Button(
-                        modifier = Modifier.height(52.dp).fillMaxWidth(),
-                        onClick = { scope.launch { viewModel.fetchRecipes() } }
-                    ) { Text(text = "Refresh") }
-                    Button(
-                        modifier = Modifier.height(52.dp).fillMaxWidth(),
-                        onClick = { addRecipe() }
-                    ) { Text(text = "Add") }
 
-                    Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                        NavGraph(startDestination = Route.RecipeNavigation.route)
-                    }
+                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
+                    NavGraph(startDestination = Route.RecipeNavigation.route)
                 }
-
 
             }
         }
@@ -71,14 +52,14 @@ class MainActivity : ComponentActivity() {
     private fun readRecipe() {
         db.collection("recipes")
             .orderBy("title")
-          //  .whereArrayContains()
+            //  .whereArrayContains()
             .get()
             .addOnSuccessListener { result ->
 
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     val a = document.toObject<Recipe>()
-                    Log.d(TAG, a.summary?.first()?.ingredients?.first().toString())
+                    Log.d(TAG, a.summary.first().ingredients?.first().toString())
                 }
             }
             .addOnFailureListener { exception ->
@@ -98,11 +79,13 @@ class MainActivity : ComponentActivity() {
         )
         val desc = Description(
             name = "Przygotowanie",
-            steps = listOf("Zagotować masło i wodę", "Do gorącej masy dodać mąkę i mocno mieszać. Ostudzić")
+            steps = listOf(
+                "Zagotować masło i wodę",
+                "Do gorącej masy dodać mąkę i mocno mieszać. Ostudzić"
+            )
         )
 
-        val recipe = Recipe(
-            id = "aaaaa",
+        val recipe = RecipeBody(
             title = "KARPATKA",
             description = listOf(desc),
             summary = listOf(summary, summary2),
@@ -123,7 +106,6 @@ class MainActivity : ComponentActivity() {
 
 
 val TAG = "dupa"
-
 
 
 @Composable

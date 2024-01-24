@@ -73,6 +73,7 @@ fun BottomNavigation(
 fun NewsBottomNavigationPreview() {
     RecipesAppTheme(dynamicColor = false) {
         BottomNavigation(items = listOf(
+            BottomNavigationItem(icon = R.drawable.ic_add_recipe, text = "Add recipe"),
             BottomNavigationItem(icon = R.drawable.ic_home, text = "Home"),
             BottomNavigationItem(icon = R.drawable.ic_favorite_fill, text = "Favorites"),
         ), selectedItem = 1, onItemClick = {})

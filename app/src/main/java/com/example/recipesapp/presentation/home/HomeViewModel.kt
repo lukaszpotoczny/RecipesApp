@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recipesapp.presentation.main.TAG
 import com.example.recipesapp.domain.model.Recipe
-import com.example.recipesapp.domain.model.RecipeResponse
+import com.example.recipesapp.domain.model.RecipeBody
 import com.example.recipesapp.domain.repo.DataRepository
 import com.example.recipesapp.domain.repo.RecipeRepository
 import com.google.firebase.firestore.toObject
@@ -32,8 +32,8 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getRecipes(){
-        dataRepository.getRecipes().onEach {
-            _state.value = state.value.copy(recipes = it)
+        dataRepository.getRecipes().onEach { recipes ->
+            _state.value = state.value.copy(recipes = recipes.sortedBy { it.title })
         }.launchIn(viewModelScope)
     }
 
@@ -43,7 +43,7 @@ class HomeViewModel @Inject constructor(
                 val recipes = mutableListOf<Recipe>()
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
-                    val item = document.toObject<RecipeResponse>()
+                    val item = document.toObject<RecipeBody>()
                     recipes.add(item.toRecipe(document.id))
                 }
                 updateRecipes(recipes)
@@ -60,13 +60,14 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    private fun RecipeResponse.toRecipe(documentId: String): Recipe {
+    private fun RecipeBody.toRecipe(documentId: String): Recipe {
         return Recipe(
             id = documentId,
             title = title ?: "",
             description = description?: emptyList(),
             summary = summary ?: emptyList(),
-            author = author
+            author = author,
+            isFavorite = false
         )
     }
 

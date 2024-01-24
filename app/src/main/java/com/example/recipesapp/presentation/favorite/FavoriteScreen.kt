@@ -1,4 +1,4 @@
-package com.example.recipesapp.presentation.home
+package com.example.recipesapp.presentation.favorite
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,16 +10,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.recipesapp.domain.model.Recipe
 import com.example.recipesapp.presentation.common.RecipeList
-import com.example.recipesapp.presentation.common.SearchBar
 
 @Composable
-fun HomeScreen(
-    state: HomeState,
+fun FavoriteScreen(
+    state: FavoriteState,
     navigateToDetails: (Recipe) -> Unit
 ) {
     Column(
@@ -28,15 +26,8 @@ fun HomeScreen(
             .statusBarsPadding()
             .padding(start = 8.dp, end = 8.dp, top = 24.dp)
     ) {
-        SearchBar(
-            modifier = Modifier.padding(horizontal = 24.dp),
-            text = "",
-            onValueChange = {},
-            onSearch = {}
-        )
-        Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = "Recipes",
+            text = "Favorites",
             style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
 //            color = colorResource(id = R.color.text_title)
         )

@@ -20,27 +20,28 @@ import com.example.recipesapp.presentation.common.SearchBar
 @Composable
 fun HomeScreen(
     state: HomeState,
-    navigateToDetails: (Recipe) -> Unit
+    updateSearchQuery: (String) -> Unit,
+    navigateToDetails: (Recipe) -> Unit,
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
-            .padding(start = 8.dp, end = 8.dp, top = 24.dp)
+            .padding(start = 8.dp, end = 8.dp, top = 32.dp)
     ) {
         SearchBar(
             modifier = Modifier.padding(horizontal = 24.dp),
-            text = "",
-            onValueChange = {},
+            text = state.searchQuery,
+            onValueChange = {updateSearchQuery(it) },
             onSearch = {}
         )
-        Spacer(modifier = Modifier.height(24.dp))
-        Text(
-            text = "Recipes",
-            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
-//            color = colorResource(id = R.color.text_title)
-        )
-        Spacer(modifier = Modifier.height(24.dp))
+//        Spacer(modifier = Modifier.height(24.dp))
+//        Text(
+//            text = "Recipes",
+//            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
+////            color = colorResource(id = R.color.text_title)
+//        )
+        Spacer(modifier = Modifier.height(32.dp))
 
         RecipeList(recipes = state.recipes, onClick = { navigateToDetails(it) })
     }

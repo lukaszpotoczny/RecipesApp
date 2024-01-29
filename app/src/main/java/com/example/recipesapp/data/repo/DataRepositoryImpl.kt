@@ -1,9 +1,5 @@
 package com.example.recipesapp.data.repo
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import com.example.recipesapp.data.local.RecipeDao
 import com.example.recipesapp.domain.model.Recipe
 import com.example.recipesapp.domain.repo.DataRepository
@@ -23,8 +19,8 @@ class DataRepositoryImpl(private val recipeDao: RecipeDao) : DataRepository {
         return recipeDao.getRecipe(id)
     }
 
-    override fun getRecipes(): Flow<List<Recipe>> {
-        return recipeDao.getRecipes()
+    override fun getRecipes(query: String): Flow<List<Recipe>> {
+        return if (query.isEmpty()) recipeDao.getRecipes() else recipeDao.searchRecipes(query)
     }
 
     override fun getFavoriteRecipes(): Flow<List<Recipe>> {

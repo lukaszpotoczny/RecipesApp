@@ -84,6 +84,7 @@ fun AppNavigator() {
                 val state = viewModel.state.value
                 HomeScreen(
                     state = state,
+                    updateSearchQuery = viewModel::updateSearchQuery,
                     navigateToDetails = { recipe ->
                         navigateToDetails(navController, recipe)
                     }

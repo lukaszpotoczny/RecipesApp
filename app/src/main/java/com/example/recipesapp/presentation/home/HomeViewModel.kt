@@ -12,6 +12,7 @@ import com.example.recipesapp.domain.repo.DataRepository
 import com.example.recipesapp.domain.repo.RecipeRepository
 import com.google.firebase.firestore.toObject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -31,8 +32,13 @@ class HomeViewModel @Inject constructor(
         fetchRecipes()
     }
 
+    fun updateSearchQuery(query: String){
+        _state.value = state.value.copy(searchQuery = query)
+        getRecipes()
+    }
+
     private fun getRecipes(){
-        dataRepository.getRecipes().onEach { recipes ->
+        dataRepository.getRecipes(_state.value.searchQuery).onEach { recipes ->
             _state.value = state.value.copy(recipes = recipes.sortedBy { it.title })
         }.launchIn(viewModelScope)
     }

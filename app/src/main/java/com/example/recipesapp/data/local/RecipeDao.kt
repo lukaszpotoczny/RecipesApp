@@ -1,6 +1,5 @@
 package com.example.recipesapp.data.local
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -23,14 +22,11 @@ interface RecipeDao {
     @Query("SELECT * FROM Recipe")
     fun getRecipes(): Flow<List<Recipe>>
 
+    @Query("SELECT * FROM Recipe WHERE title LIKE  '%' || :query || '%'")
+    fun searchRecipes(query: String): Flow<List<Recipe>>
+
     @Query("SELECT * FROM Recipe WHERE isFavorite=1")
     fun getFavoriteRecipes(): Flow<List<Recipe>>
-
-    @Query("SELECT * FROM Recipe WHERE title LIKE :query")
-    fun searchRecipes(query: String): PagingSource<Int, Recipe>
-
-    @Query("SELECT * FROM Recipe")
-    fun queryRecipes(): PagingSource<Int, Recipe>
 
     @Query("SELECT * FROM Recipe")
     suspend fun getAllRecipes(): List<Recipe>

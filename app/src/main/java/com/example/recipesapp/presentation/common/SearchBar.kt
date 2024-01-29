@@ -2,26 +2,29 @@ package com.example.recipesapp.presentation.common
 
 import android.content.res.Configuration
 import androidx.compose.foundation.border
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -30,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import com.example.recipesapp.R
 import com.example.recipesapp.ui.theme.RecipesAppTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,
@@ -38,6 +41,8 @@ fun SearchBar(
     onValueChange: (String) -> Unit,
     onSearch: () -> Unit
 ) {
+    val softwareKeyboardController = LocalSoftwareKeyboardController.current
+
     Box(modifier = modifier) {
         TextField(
             modifier = Modifier
@@ -50,19 +55,19 @@ fun SearchBar(
                     painter = painterResource(id = R.drawable.ic_search),
                     contentDescription = null,
                     modifier = Modifier.size(20.dp),
-//                    tint = colorResource(id = R.color.body)
+                    tint = colorResource(id = R.color.body)
                 )
             },
             placeholder = {
                 Text(
                     text = "Search",
                     style = MaterialTheme.typography.bodySmall,
-//                    color = colorResource(id = R.color.placeholder)
+                    color = colorResource(id = R.color.placeholder)
                 )
             },
             shape = MaterialTheme.shapes.medium,
             colors = TextFieldDefaults.textFieldColors(
-//                containerColor = colorResource(id = R.color.input_background),
+                containerColor = colorResource(id = R.color.input_background),
 //                textColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
                 cursorColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
                 disabledIndicatorColor = Color.Transparent,
@@ -75,10 +80,23 @@ fun SearchBar(
             keyboardActions = KeyboardActions(
                 onSearch = {
                     onSearch()
+                    softwareKeyboardController?.hide()
                 }
             ),
             textStyle = MaterialTheme.typography.bodySmall,
         )
+
+        if (text.isNotEmpty()) {
+            IconButton(
+                onClick = {
+                    onValueChange("")
+                    softwareKeyboardController?.show()
+                },
+                modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterEnd)
+            ) {
+                Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear")
+            }
+        }
     }
 }
 
@@ -99,7 +117,7 @@ fun Modifier.searchBar(): Modifier = composed {
 @Composable
 fun SearchBarPreview() {
     RecipesAppTheme {
-        SearchBar(text = "", onValueChange = {}) {
+        SearchBar(text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", onValueChange = {}) {
 
         }
     }

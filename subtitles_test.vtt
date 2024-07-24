@@ -4,7 +4,7 @@ WEBVTT
 This is the first caption. Aligned to the right.
 
 00:00:05.000 --> 00:00:10.000 position:10%,line-left align:left size:35%
-This is the second caption. It spans multiple lines.
+This is the second caption. Aligned to the left.
 And continues here.
 
 00:00:10.000 --> 00:00:15.000
@@ -16,10 +16,7 @@ And continues here.
 00:00:20.000 --> 00:00:25.000
 <c.bottom>This caption is at the bottom.</c.bottom>
 
-00:00:25.000 --> 00:00:30.000 position:0% align:center
-This caption is on the top.
-
-00:00:30.000 --> 00:00:35.000
+00:00:25.000 --> 00:00:35.000
 This is another caption.
 
 00:00:35.000 --> 00:00:40.000

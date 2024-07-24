@@ -1,14 +1,13 @@
 WEBVTT
 
-WEBVTT
-
-00:00:00.000 --> 00:00:05.000This is the first caption.
+00:00:00.000 --> 00:00:05.000  position:90% align:right size:35%
+This is the first caption. Aligned to the right.
 
 00:00:05.000 --> 00:00:10.000 position:10%,line-left align:left size:35%
 This is the second caption. It spans multiple lines.
 And continues here.
 
-00:00:10.000--> 00:00:15.000 position:90% align:right size:35%
+00:00:10.000--> 00:00:15.000
 <b>This caption is bold.</b>
 
 00:00:15.000 --> 00:00:20.000
@@ -17,7 +16,8 @@ And continues here.
 00:00:20.000 --> 00:00:25.000
 <c.bottom>This caption is at the bottom.</c.bottom>
 
-00:00:25.000 --> 00:00:30.000<c.right>This caption is on the right.</c.right>
+00:00:25.000 --> 00:00:30.000
+<c.right>This caption is on the right.</c.right>
 
 00:00:30.000 --> 00:00:35.000
 This is another caption.

@@ -3,11 +3,12 @@ WEBVTT
 STYLE
 ::cue {
   color: yellow;
-  position: 20%;
+  bottom: 50px;
+  position:20%;
 }
 
 00:00:00.000 --> 00:00:05.000
-xxThis is the first caption. test 3 
+xxxThis is the first caption. test 4
 
 00:00:05.000 --> 00:00:10.000
 This is the second caption. 

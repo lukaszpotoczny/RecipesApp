@@ -2,7 +2,7 @@ WEBVTT
 
 <style>
 ::cue {
-  position:50%;
+ bottom: 100px;
 }
 </style>
 

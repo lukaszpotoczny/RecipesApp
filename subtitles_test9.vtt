@@ -4,11 +4,11 @@ STYLE
 ::cue {
   color: green;
   font-size: 60px; 
-  font-line: 20%; 
+  font-position: 20%; 
 }
 
 00:00:00.000 --> 00:00:05.000
-xThis is the first caption. test 8
+xThis is the first caption. test 9
 
 00:00:05.000 --> 00:00:10.000
 This is the second caption. 

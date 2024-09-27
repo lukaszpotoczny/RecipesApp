@@ -4,9 +4,8 @@ REGION
 id:fred
 width:100%
 lines:5
-regionanchor:0%,100%
-viewportanchor:0%,90%
-scroll:botoom
+regionanchor:0%,90%
+viewportanchor:0%,50%
 
 STYLE
 ::cue {

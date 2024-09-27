@@ -1,13 +1,7 @@
 WEBVTT
 
-STYLE
-::cue {
-  font-size: 20px;
-  color: red;
-}
-
 00:00:00.000 --> 00:00:05.000 
-xThis is the first caption. test 44
+xThis is the first caption. test 5
 
 00:00:05.000 --> 00:00:10.000
 This is the second caption. 

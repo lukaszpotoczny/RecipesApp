@@ -1,0 +1,77 @@
+WEBVTT
+
+REGION
+id:fred
+width:100%
+lines:5
+regionanchor:0%,100%
+viewportanchor:0%,90%
+scroll:botoom
+
+STYLE
+::cue {
+  font-family: "Roboto", sans-serif;
+  font-size: 40%;
+  background-color: rgba(0,0,0,0.5);
+  color: #FFFFFF;
+}
+
+1
+00:00:00.156 --> 00:00:10.519 region:fred
+We are living in a world where things are not the way we want. We are living in a world where things are not the way we want. We are living in a world where things are not the way we want. We are living in a world where things are not the way we want. We are living in a world where things are not the way we want.
+
+2
+00:00:11.960 --> 00:00:16.303 region:fred
+We are living in a world where things are not the way we want.
+
+3
+00:00:16.884 --> 00:00:18.025 region:fred
+We are getting a system.
+
+4
+00:00:18.065 --> 00:00:23.890 region:fred
+We're getting a world which is unequal, which is sexist, which is racist.
+
+5
+00:00:23.930 --> 00:00:26.312 region:fred
+We have systems that are discriminating against people.
+
+6
+00:00:26.332 --> 00:00:29.874 region:fred
+Our climate, our environment is at risk.
+
+7
+00:00:30.355 --> 00:00:31.836 region:fred
+And there's so much that needs to be done.
+
+8
+00:00:33.237 --> 00:00:38.939 region:fred
+I hope that young people, they stand up, they raise their voices, they start their activism right now.
+
+9
+00:00:39.039 --> 00:00:40.420 region:fred
+Let your age not stop you.
+
+10
+00:00:40.460 --> 00:00:44.141 region:fred
+Oftentimes we're told that, you know, you have to be 40 and 50 to change the world.
+
+11
+00:00:44.261 --> 00:00:45.322 region:fred
+I do not believe in that.
+
+12
+00:00:45.682 --> 00:00:48.943 region:fred
+I think you can be a change maker right now if you are 11, if
+
+13
+00:00:48.983 --> 00:00:53.765 region:fred
+you are 16, if you are, you know, 30, 40, change is possible anytime.
+
+14
+00:00:53.945 --> 00:00:56.846 region:fred
+And I want you to believe in yourself and make this world a
+
+15
+00:00:57.047 --> 00:01:00.548 region:fred
+fairer, more equal and a better place for each and every one.
